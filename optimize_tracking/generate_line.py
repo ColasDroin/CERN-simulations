@@ -48,7 +48,8 @@ def generate_line():
         os.symlink(os.path.abspath(links[kk]), kk)
 
     # Create empty temp folder
-    os.system("rm -r temp")
+    if os.path.exists("temp"):
+        os.system("rm -r temp")
     os.system("mkdir temp")
 
     ######################################
