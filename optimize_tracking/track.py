@@ -6,6 +6,7 @@ import logging
 import numpy as np
 import pandas as pd
 
+import xobjects as xo
 import xtrack as xt
 import xpart as xp
 
@@ -57,12 +58,14 @@ def track(line_dict, particle_df, epsn_1, epsn_2, delta_max, n_turns):
     #################
 
     tracker = xt.Tracker(line=line)
-
+    # context = xo.ContextCpu()
+    # line.build_tracker(_context=context)
     ############################
     # Save initial coordinates #
     ############################
 
-    pd.DataFrame(particles.to_dict()).to_parquet("input_particles.parquet")
+    # pd.DataFrame(particles.to_dict()).to_parquet("input_particles.parquet")
+    pd.DataFrame(particles.to_dict()).to_csv("input_particles.csv")
 
     ##########
     # Track! #
@@ -76,3 +79,4 @@ def track(line_dict, particle_df, epsn_1, epsn_2, delta_max, n_turns):
     print(f"Elapsed time per particle per turn: {(b-a)/particles._capacity/ n_turns*1e6} us")
 
     # pd.DataFrame(particles.to_dict()).to_parquet("output_particles.parquet")
+    pd.DataFrame(particles.to_dict()).to_csv("output_particles.csv")

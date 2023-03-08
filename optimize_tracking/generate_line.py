@@ -161,7 +161,7 @@ def generate_line():
     mad.input("call, file='modules/submodule_01e_final.madx';")
 
     #################################
-    # Check bahavior of orbit knobs #
+    # Check behavior of orbit knobs #
     #################################
 
     # Check flat machine
